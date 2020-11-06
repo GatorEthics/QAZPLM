@@ -35,7 +35,7 @@ def main():
         + "About This Program:"
         + color.END
         + color.END
-        + "  This is a training algorithm that is used to analyze subconcious user bias. The program will ask the user to enter as many letters as possible for 15 second trials, then analyze and create a dataset trained off of user entries. There will be 4 Trials, amounting to the user entering letters for 60 seconds in total.\n\nThe program will now ask you to enter as many letters as you can for 15 seconds. Keys considered to be on the left side of the keyboard are QWASZXE, the middle DCRFVTGBYHU, and the right is POLMKNIJ.\n\nYou may continue when you are ready."
+        + "  This is a training algorithm that is used to analyze subconcious user bias. The program will ask the user to enter as many letters as possible for 15 second trials, then analyze and create a dataset trained off of user entries. There will be 4 Trials, amounting to the user entering letters for 60 seconds in total.\n\nThe program will now ask you to enter as many letters as you can for 15 seconds. Note! You are not entering words, just keys randomly! Keys considered to be on the left side of the keyboard are QWASZXE, the middle DCRFVTGBYHU, and the right is POLMKNIJ.\n\nYou may continue when you are ready."
     )
     user_ready = 0
     letter_input = []
@@ -413,7 +413,7 @@ def user_input():
     dataset = []
     print("* PREPARE READY TO TYPE LETTERS IN 5 SECONDS *")
 
-    while time.time() - start_time < 2:
+    while time.time() - start_time < 5:
         pass
 
     print(
@@ -423,7 +423,7 @@ def user_input():
         + color.END
         + color.END
     )
-    while time.time() - start_time < 5:
+    while time.time() - start_time < 20:
         inputted = _getch()
         dataset.append(inputted)
 
