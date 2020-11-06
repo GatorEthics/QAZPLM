@@ -203,7 +203,7 @@ def generate_dataset(total_length, all_inputted_letters):
     generated_data = []
     i = 0
 
-    while i <= length:
+    while i < length:
         current_random = random.choice(all_inputted_letters)
         generated_data.append(current_random)
         i += 1
