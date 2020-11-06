@@ -380,20 +380,6 @@ def data_center(trial, length, counted_letters):
         "middle_percent": middle_percent,
         "right_percent": right_percent,
     }
-
-    # user_print_data = input("\nEnter Y to print Trial Data or N to move on: ")
-    # if user_print_data == 'Y':
-    #     print(table)
-    #
-    #     print("    -- LEFT:", left, "/", total, "(", left_percent, "%).")
-    #
-    #     print("    -- MIDDLE:", middle, "/", total, "(", middle , "%).")
-    #
-    #     print("    -- RIGHT:", right, "/", total, "(", right_percent , "%).")
-    #
-    # else:
-    #     pass
-
     return trial_dict, table
 
 
