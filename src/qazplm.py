@@ -165,11 +165,21 @@ def main():
                 + "  "
             )
 
+    # write all results to CSV
     keys = trials_list[0].keys()
     with open("results.csv", "w", newline="") as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(trials_list)
+
+    # write only the total results to a CSV with no headers
+    total_trial = []
+    total_trial.append(trials_list[4])
+
+    keys = trials_list[0].keys()
+    with open("total_results.csv", "w", newline="") as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writerows(total_trial)
 
     for trial_dict in trials_list:
         table.add_row(
@@ -403,7 +413,7 @@ def user_input():
     dataset = []
     print("* PREPARE READY TO TYPE LETTERS IN 5 SECONDS *")
 
-    while time.time() - start_time < 5:
+    while time.time() - start_time < 2:
         pass
 
     print(
@@ -413,7 +423,7 @@ def user_input():
         + color.END
         + color.END
     )
-    while time.time() - start_time < 20:
+    while time.time() - start_time < 5:
         inputted = _getch()
         dataset.append(inputted)
 
