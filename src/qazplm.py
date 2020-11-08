@@ -43,6 +43,8 @@ def main():
     all_inputted_letters = []
     trials_list = []
 
+    user_hand = input("Input right if you are right-handed and left if you are left-handed: ")
+
     while trial_count <= 4:
         user_ready = "N"
         if trial_count == 1:
@@ -82,8 +84,9 @@ def main():
         length = len(letter_input)
 
         counted_letters = count_letters(length, letter_input)
-        trial_dict, trial_table = data_center(trial_count, length, counted_letters)
+        trial_dict, trial_table = data_center(user_hand, trial_count, length, counted_letters)
         trials_list.append(trial_dict)
+
         if trial_count < 4:
             print(
                 "Trial #",
@@ -101,29 +104,30 @@ def main():
         "Left %",
         "Middle %",
         "Right %",
+        "Correct",
     ]
 
     total_length = len(all_inputted_letters)
     all_counted_letters = count_letters(total_length, all_inputted_letters)
     trial = "Total"
-    total_trials_dict, total_trial_table = data_center(
+    total_trials_dict, total_trial_table = data_center(user_hand,
         trial, total_length, all_counted_letters
     )
 
 
-    if (total_trials_dict["middle_percent"] > total_trials_dict["left_percent"] and total_trials_dict["middle_percent"] > total_trials_dict["right_percent"]):
-        if total_trials_dict["left_percent"] > total_trials_dict["right_percent"]:
-            handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be left-handed."
-        elif total_trials_dict["right_percent"] > total_trials_dict["left_percent"]:
-            handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be right-handed."
-        else:
-            pass
-    elif total_trials_dict["right_percent"] > total_trials_dict["left_percent"]:
-        handedness_message = "* Based on your inputted letters, we would guess you are right-handed."
-    elif total_trials_dict["left_percent"] > total_trials_dict["right_percent"]:
-        handedness_message = "* Based on your inputted letters, we would guess you are left-handed."
-    else:
-        pass
+    # if (total_trials_dict["middle_percent"] > total_trials_dict["left_percent"] and total_trials_dict["middle_percent"] > total_trials_dict["right_percent"]):
+    #     if total_trials_dict["left_percent"] > total_trials_dict["right_percent"]:
+    #         handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be left-handed."
+    #     elif total_trials_dict["right_percent"] > total_trials_dict["left_percent"]:
+    #         handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be right-handed."
+    #     else:
+    #         pass
+    # elif total_trials_dict["right_percent"] > total_trials_dict["left_percent"]:
+    #     handedness_message = "* Based on your inputted letters, we would guess you are right-handed."
+    # elif total_trials_dict["left_percent"] > total_trials_dict["right_percent"]:
+    #     handedness_message = "* Based on your inputted letters, we would guess you are left-handed."
+    # else:
+    #     pass
 
     trials_list.append(total_trials_dict)
 
@@ -135,7 +139,7 @@ def main():
 
     trial = "Generated Data"
     gen_trials_dict, gen_trial_table = data_center(
-        trial, gen_length, gen_counted_letters
+        user_hand, trial, gen_length, gen_counted_letters
     )
     trials_list.append(gen_trials_dict)
 
@@ -189,12 +193,12 @@ def main():
                 trial_dict["left_percent"],
                 trial_dict["middle_percent"],
                 trial_dict["right_percent"],
+                trial_dict["correct"],
             ]
         )
 
     print(table)
 
-    print(color.CYAN + "\n\n" + handedness_message + color.END)
 
 
 def generate_dataset(total_length, all_inputted_letters):
@@ -322,7 +326,7 @@ def count_letters(length, letter_input):
     return letter_list
 
 
-def data_center(trial, length, counted_letters):
+def data_center(user_hand, trial, length, counted_letters):
     total = length
 
     left = 0
@@ -373,13 +377,43 @@ def data_center(trial, length, counted_letters):
     middle_percent = (middle / total) * 100
     right_percent = (right / total) * 100
 
+    if (middle_percent > left_percent and middle_percent > right_percent):
+        if left_percent > right_percent:
+            handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be left-handed."
+            handedness_prediction = "ambidextrous"
+        elif right_percent > left_percent:
+            handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be right-handed."
+            handedness_prediction = "ambidextrous"
+        else:
+            pass
+    elif right_percent > left_percent:
+        handedness_message = "* Based on your inputted letters, we would guess you are right-handed."
+        handedness_prediction = "right"
+
+    elif left_percent > right_percent:
+        handedness_message = "* Based on your inputted letters, we would guess you are left-handed."
+        handedness_prediction = "left"
+    else:
+        pass
+
+    if handedness_prediction == user_hand:
+        correctness = "yes"
+    else:
+        correctness = "no"
+
+    if trial == 1 or trial == 2 or trial == 3 or trial == 4:
+        print(color.CYAN + "\n\n" + handedness_message + color.END)
+
     trial_dict = {
         "trial": trial,
         "length": total,
         "left_percent": left_percent,
         "middle_percent": middle_percent,
         "right_percent": right_percent,
+        "correct": correctness,
     }
+
+
     return trial_dict, table
 
 
@@ -399,7 +433,7 @@ def user_input():
     dataset = []
     print("* PREPARE READY TO TYPE LETTERS IN 5 SECONDS *")
 
-    while time.time() - start_time < 5:
+    while time.time() - start_time < 2:
         pass
 
     print(
@@ -409,7 +443,7 @@ def user_input():
         + color.END
         + color.END
     )
-    while time.time() - start_time < 20:
+    while time.time() - start_time < 5:
         inputted = _getch()
         dataset.append(inputted)
 
