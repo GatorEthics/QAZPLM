@@ -1,4 +1,5 @@
-1,29,0.0,51.724137931034484,48.275862068965516,no,right
+trial,length,left_percent,middle_percent,right_percent,correct,actual_handedness
+1,31,0.0,48.38709677419355,51.61290322580645,yes,right
 2,16,0.0,0.0,100.0,yes,right
-3,13,0.0,0.0,100.0,yes,right
-4,25,0.0,52.0,48.0,no,right
+3,1,0.0,0.0,100.0,yes,right
+4,55,10.909090909090908,21.818181818181817,67.27272727272727,yes,right

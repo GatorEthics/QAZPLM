@@ -175,6 +175,7 @@ def main():
     keys = trials_list[0].keys()
     with open("results.csv", "w", newline="") as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
         dict_writer.writerows(test_list)
 
     for trial_dict in trials_list:
@@ -192,6 +193,7 @@ def main():
 
     print(table)
 
+    analysis(trials_list[0:4])
 
 
 def generate_dataset(total_length, all_inputted_letters):
@@ -421,6 +423,15 @@ def _getch():
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
+def analysis(trials_list):
+    """Analyzes the user results and the results of the provided CSV file."""
+    print(trials_list)
+
+    with open("results.csv", "r") as f:
+        reader = csv.DictReader(f)
+        inputted_trials = list(reader)
+        
+    print("AAA", inputted_trials)
 
 def user_input():
     start_time = time.time()
