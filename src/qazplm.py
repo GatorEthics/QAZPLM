@@ -427,10 +427,29 @@ def analysis(trials_list):
     """Analyzes the user results and the results of the provided CSV file."""
     print(trials_list)
 
+    correct_new_trials = 0
+    incorrect_new_trials = 0
+    correct_inp_trials = 0
+    incorrect_inp_trials = 0
+
     with open("results.csv", "r") as f:
         reader = csv.DictReader(f)
         inputted_trials = list(reader)
-        
+
+    for trial in trials_list:
+        if trial['correct'] == "yes":
+            correct_new_trials += 1
+        else:
+            incorrect_new_trials += 1
+
+    print("Correct new", correct_new_trials, "Incorrect new", incorrect_new_trials)
+
+    for trial in inputted_trials:
+        if trial['correct'] == "yes":
+            correct_inp_trials += 1
+        else:
+            incorrect_inp_trials += 1
+
     print("AAA", inputted_trials)
 
 def user_input():
