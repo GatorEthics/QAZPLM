@@ -163,7 +163,6 @@ def main():
     keys = trials_list[0].keys()
     with open("results.csv", "w", newline="") as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
-        dict_writer.writeheader()
         dict_writer.writerows(test_list)
 
     for trial_dict in trials_list:
