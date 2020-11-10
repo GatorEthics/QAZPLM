@@ -43,6 +43,8 @@ def main():
     all_inputted_letters = []
     trials_list = []
 
+    user_name = input(color.BOLD + color.UNDERLINE + "\nInput your name:" + color.END + color.END + " ")
+
     user_hand = input(color.BOLD + color.UNDERLINE + "\nInput right if you are right-handed and left if you are left-handed:" + color.END + color.END + " ")
 
     print("\nYou may continue when you are ready.")
@@ -85,7 +87,7 @@ def main():
         length = len(letter_input)
 
         counted_letters = count_letters(length, letter_input)
-        trial_dict, trial_table = data_center(user_hand, trial_count, length, counted_letters)
+        trial_dict, trial_table = data_center(user_hand, trial_count, length, counted_letters, user_name)
         trials_list.append(trial_dict)
 
         if trial_count < 4:
@@ -113,7 +115,7 @@ def main():
     all_counted_letters = count_letters(total_length, all_inputted_letters)
     trial = "Total"
     total_trials_dict, total_trial_table = data_center(user_hand,
-        trial, total_length, all_counted_letters
+        trial, total_length, all_counted_letters, user_name
     )
 
     trials_list.append(total_trials_dict)
@@ -126,7 +128,7 @@ def main():
 
     trial = "Generated Data"
     gen_trials_dict, gen_trial_table = data_center(
-        user_hand, trial, gen_length, gen_counted_letters
+        user_hand, trial, gen_length, gen_counted_letters, user_name
     )
     trials_list.append(gen_trials_dict)
 
@@ -325,7 +327,7 @@ def count_letters(length, letter_input):
     return letter_list
 
 
-def data_center(user_hand, trial, length, counted_letters):
+def data_center(user_hand, trial, length, counted_letters, user_name):
     total = length
 
     left = 0
@@ -410,7 +412,8 @@ def data_center(user_hand, trial, length, counted_letters):
         "middle_percent": middle_percent,
         "right_percent": right_percent,
         "correct": correctness,
-        "actual_handedness": user_hand
+        "actual_handedness": user_hand,
+        "user_name": user_name,
     }
 
 
@@ -495,7 +498,7 @@ def analysis(trials_list):
     print(color.BOLD + " * Percentage of Correct Trials (4 total trials) from your Run: " + color.END + str(new_trial_percent) + "%")
     print(color.BOLD + " * Percentage of Correct Trials (" + str(len_previous_input) + " total trials) from Imported CSV: " + color.END + str(previous_trial_percent) + "%")
     print(" * Of The Correct Trials " + str(right_correct_percent) + "% of them were for right-handed users. " + str(left_correct_percent) + "% of these trials were for left-handed users. These are for all " + str((len_previous_input + 4)) + " trials.")
-    print(" * Of The Incorrect Trials " + str(right_incorrect_percent) + "% of them were for right-handed users." + str(left_incorrect_percent) + "% of these trials were for left-handed users. These are for all " + str((len_previous_input + 4)) + " trials.\n\n")
+    print(" * Of The Incorrect Trials " + str(right_incorrect_percent) + "% of them were for right-handed users. " + str(left_incorrect_percent) + "% of these trials were for left-handed users. These are for all " + str((len_previous_input + 4)) + " trials.\n\n")
 
 def user_input():
     start_time = time.time()

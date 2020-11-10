@@ -1,5 +1,5 @@
-trial,length,left_percent,middle_percent,right_percent,correct,actual_handedness
-1,26,0.0,26.923076923076923,73.07692307692307,yes,right
-2,28,0.0,21.428571428571427,78.57142857142857,yes,right
-3,40,0.0,0.0,100.0,yes,right
-4,24,0.0,41.66666666666667,58.333333333333336,yes,right
+trial,length,left_percent,middle_percent,right_percent,correct,actual_handedness,user_name
+1,18,0.0,44.44444444444444,55.55555555555556,yes,right,Christian
+2,26,80.76923076923077,19.230769230769234,0.0,no,right,Christian
+3,14,85.71428571428571,14.285714285714285,0.0,no,right,Christian
+4,15,100.0,0.0,0.0,no,right,Christian
