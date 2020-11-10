@@ -178,7 +178,25 @@ def main():
 
     print(table)
 
-    analysis(trials_list[0:4])
+    user_ready = input(
+        color.UNDERLINE
+        + "\nEnter C to import a CSV file for further analysis. Enter N to exit the program:"
+        + color.END
+        + "  "
+    )
+    if user_ready == "N":
+        pass
+    elif user_ready == "C":
+        analysis(trials_list[0:4])
+    else:
+        while user_ready != "Y":
+            user_ready = input(
+                color.UNDERLINE
+                + "\nEnter N to exit the program:"
+                + color.END
+                + "  "
+            )
+
 
 
 def generate_dataset(total_length, all_inputted_letters):
@@ -410,8 +428,6 @@ def _getch():
 
 def analysis(trials_list):
     """Analyzes the user results and the results of the provided CSV file."""
-    print(trials_list)
-
     correct_new_trials = 0
     incorrect_new_trials = 0
     correct_inp_trials = 0
@@ -421,7 +437,9 @@ def analysis(trials_list):
     incorrect_right_trials = 0
     incorrect_left_trials = 0
 
-    with open("total_results.csv", "r") as f:
+    csv_file = input("* Enter your CSV filename (filename.csv) you wish to compare your results with: ")
+
+    with open(csv_file, "r") as f:
         reader = csv.DictReader(f)
         inputted_trials = list(reader)
 
@@ -476,10 +494,10 @@ def analysis(trials_list):
     right_incorrect_percent = (incorrect_right_trials / total_incorrect_trials) * 100
     left_incorrect_percent = (incorrect_left_trials / total_incorrect_trials) * 100
 
-    print(" * Percentage of Correct Trials from your Run:", new_trial_percent)
-    print(" * Percentage of Correct Trials from Imported CSV:", previous_trial_percent)
-    print(" * Of The Correct Trials ", right_correct_percent, "% of them were for right-handed users.", left_correct_percent, "% of these trials were for left-handed users.")
-    print(" * Of The Incorrect Trials ", right_incorrect_percent, "% of them were for right-handed users.", left_incorrect_percent, "% of these trials were for left-handed users.")
+    print(" * Percentage of Correct Trials (4 total trials) from your Run:", new_trial_percent, "%")
+    print(" * Percentage of Correct Trials (", len_previous_input ," total trials) from Imported CSV:", previous_trial_percent, "%")
+    print(" * Of The Correct Trials ", right_correct_percent, "% of them were for right-handed users.", left_correct_percent, "% of these trials were for left-handed users. These are for all", len_previous_input + 4, "trials.")
+    print(" * Of The Incorrect Trials ", right_incorrect_percent, "% of them were for right-handed users.", left_incorrect_percent, "% of these trials were for left-handed users. These are for all", len_previous_input + 4, "trials.")
 
 def user_input():
     start_time = time.time()
