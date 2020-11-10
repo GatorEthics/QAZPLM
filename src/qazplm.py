@@ -35,7 +35,7 @@ def main():
         + "About This Program:"
         + color.END
         + color.END
-        + "  This is a training algorithm that is used to analyze subconcious user bias. The program will ask the user to enter as many letters as possible for 15 second trials, then analyze and create a dataset trained off of user entries. There will be 4 Trials, amounting to the user entering letters for 60 seconds in total.\n\nThe program will now ask you to enter as many letters as you can for 15 seconds. Note! You are not entering words, just keys randomly! Keys considered to be on the left side of the keyboard are QWASZXE, the middle DCRFVTGBYHU, and the right is POLMKNIJ.\n\nYou may continue when you are ready."
+        + "  This is a training algorithm that is used to analyze subconcious user bias. The program will ask the user to enter as many letters as possible for 15 second trials, then analyze and create a dataset trained off of user entries. There will be 4 Trials, amounting to the user entering letters for 60 seconds in total.\n\nThe program will now ask you to enter as many letters as you can for 15 seconds. Note! You are not entering words, just keys randomly! Keys considered to be on the left side of the keyboard are QWASZXE, the middle DCRFVTGBYHU, and the right is POLMKNIJ."
     )
     user_ready = 0
     letter_input = []
@@ -43,8 +43,9 @@ def main():
     all_inputted_letters = []
     trials_list = []
 
-    user_hand = input("Input right if you are right-handed and left if you are left-handed: ")
+    user_hand = input(color.BOLD + color.UNDERLINE + "\nInput right if you are right-handed and left if you are left-handed:" + color.END + color.END + " ")
 
+    print("\nYou may continue when you are ready.")
     while trial_count <= 4:
         user_ready = "N"
         if trial_count == 1:
@@ -437,7 +438,7 @@ def analysis(trials_list):
     incorrect_right_trials = 0
     incorrect_left_trials = 0
 
-    csv_file = input("* Enter your CSV filename (filename.csv) you wish to compare your results with: ")
+    csv_file = input(color.UNDERLINE + "\n* Enter your CSV filename (filename.csv) you wish to compare your results with:" + color.END + " ")
 
     with open(csv_file, "r") as f:
         reader = csv.DictReader(f)
@@ -458,10 +459,6 @@ def analysis(trials_list):
                 incorrect_left_trials += 1
             else:
                 pass
-
-
-
-    print("Correct new", correct_new_trials, "Incorrect new", incorrect_new_trials)
 
     for trial in inputted_trials:
         if trial['correct'] == "yes":
@@ -494,15 +491,16 @@ def analysis(trials_list):
     right_incorrect_percent = (incorrect_right_trials / total_incorrect_trials) * 100
     left_incorrect_percent = (incorrect_left_trials / total_incorrect_trials) * 100
 
-    print(" * Percentage of Correct Trials (4 total trials) from your Run:", new_trial_percent, "%")
-    print(" * Percentage of Correct Trials (", len_previous_input ," total trials) from Imported CSV:", previous_trial_percent, "%")
-    print(" * Of The Correct Trials ", right_correct_percent, "% of them were for right-handed users.", left_correct_percent, "% of these trials were for left-handed users. These are for all", len_previous_input + 4, "trials.")
-    print(" * Of The Incorrect Trials ", right_incorrect_percent, "% of them were for right-handed users.", left_incorrect_percent, "% of these trials were for left-handed users. These are for all", len_previous_input + 4, "trials.")
+    print(color.UNDERLINE + color.BOLD + color.GREEN + "\n\nRESULTS:" + color.END + color.END + color.END)
+    print(color.BOLD + " * Percentage of Correct Trials (4 total trials) from your Run: " + color.END + str(new_trial_percent) + "%")
+    print(color.BOLD + " * Percentage of Correct Trials (" + str(len_previous_input) + " total trials) from Imported CSV: " + color.END + str(previous_trial_percent) + "%")
+    print(" * Of The Correct Trials " + str(right_correct_percent) + "% of them were for right-handed users. " + str(left_correct_percent) + "% of these trials were for left-handed users. These are for all " + str((len_previous_input + 4)) + " trials.")
+    print(" * Of The Incorrect Trials " + str(right_incorrect_percent) + "% of them were for right-handed users." + str(left_incorrect_percent) + "% of these trials were for left-handed users. These are for all " + str((len_previous_input + 4)) + " trials.\n\n")
 
 def user_input():
     start_time = time.time()
     dataset = []
-    print("* PREPARE READY TO TYPE LETTERS IN 5 SECONDS *")
+    print("* BE READY TO TYPE LETTERS IN 5 SECONDS *")
 
     while time.time() - start_time < 2:
         pass
