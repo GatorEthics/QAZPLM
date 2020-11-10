@@ -115,21 +115,6 @@ def main():
         trial, total_length, all_counted_letters
     )
 
-
-    # if (total_trials_dict["middle_percent"] > total_trials_dict["left_percent"] and total_trials_dict["middle_percent"] > total_trials_dict["right_percent"]):
-    #     if total_trials_dict["left_percent"] > total_trials_dict["right_percent"]:
-    #         handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be left-handed."
-    #     elif total_trials_dict["right_percent"] > total_trials_dict["left_percent"]:
-    #         handedness_message = "* Most of your typing was in the middle of the keyboard, possibly indicating that you are ambidextrous. We estimate you may be right-handed."
-    #     else:
-    #         pass
-    # elif total_trials_dict["right_percent"] > total_trials_dict["left_percent"]:
-    #     handedness_message = "* Based on your inputted letters, we would guess you are right-handed."
-    # elif total_trials_dict["left_percent"] > total_trials_dict["right_percent"]:
-    #     handedness_message = "* Based on your inputted letters, we would guess you are left-handed."
-    # else:
-    #     pass
-
     trials_list.append(total_trials_dict)
 
     print("\n\n\n\nGENERATING DATASET ........")
@@ -487,7 +472,7 @@ def analysis(trials_list):
 
     right_correct_percent = (correct_right_trials / total_correct_trials) * 100
     left_correct_percent = (correct_left_trials / total_correct_trials) * 100
-    
+
     right_incorrect_percent = (incorrect_right_trials / total_incorrect_trials) * 100
     left_incorrect_percent = (incorrect_left_trials / total_incorrect_trials) * 100
 
@@ -495,8 +480,6 @@ def analysis(trials_list):
     print(" * Percentage of Correct Trials from Imported CSV:", previous_trial_percent)
     print(" * Of The Correct Trials ", right_correct_percent, "% of them were for right-handed users.", left_correct_percent, "% of these trials were for left-handed users.")
     print(" * Of The Incorrect Trials ", right_incorrect_percent, "% of them were for right-handed users.", left_incorrect_percent, "% of these trials were for left-handed users.")
-
-    print("AAA", inputted_trials)
 
 def user_input():
     start_time = time.time()
