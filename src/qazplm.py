@@ -433,6 +433,8 @@ def analysis(trials_list):
     incorrect_inp_trials = 0
     correct_right_trials = 0
     correct_left_trials = 0
+    incorrect_right_trials = 0
+    incorrect_left_trials = 0
 
     with open("total_results.csv", "r") as f:
         reader = csv.DictReader(f)
@@ -447,8 +449,13 @@ def analysis(trials_list):
                 correct_left_trials += 1
         else:
             incorrect_new_trials += 1
+            if trial['actual_handedness'] == "right":
+                incorrect_right_trials += 1
+            elif trial['actual_handedness'] == "left":
+                incorrect_left_trials += 1
+            else:
+                pass
 
-    new_trial_percent = (correct_new_trials / 4) * 100
 
 
     print("Correct new", correct_new_trials, "Incorrect new", incorrect_new_trials)
@@ -464,19 +471,30 @@ def analysis(trials_list):
                 pass
         else:
             incorrect_inp_trials += 1
+            if trial['actual_handedness'] == "right":
+                incorrect_right_trials += 1
+            elif trial['actual_handedness'] == "left":
+                incorrect_left_trials += 1
+            else:
+                pass
 
+    total_correct_trials = correct_inp_trials + correct_new_trials
+    total_incorrect_trials = incorrect_new_trials + incorrect_inp_trials
     len_previous_input = len(inputted_trials)
-    len_total_input = len_previous_input + 4
 
+    new_trial_percent = (correct_new_trials / 4) * 100
     previous_trial_percent = (correct_inp_trials / len_previous_input) * 100
-    right_correct_percent = (correct_right_trials / len_total_input) * 100
-    left_correct_percent = (correct_left_trials / len_total_input) * 100
-    extra_prediction_percent = (extraneous_predictions / len_total_input) * 100
+
+    right_correct_percent = (correct_right_trials / total_correct_trials) * 100
+    left_correct_percent = (correct_left_trials / total_correct_trials) * 100
+    
+    right_incorrect_percent = (incorrect_right_trials / total_incorrect_trials) * 100
+    left_incorrect_percent = (incorrect_left_trials / total_incorrect_trials) * 100
 
     print(" * Percentage of Correct Trials from your Run:", new_trial_percent)
     print(" * Percentage of Correct Trials from Imported CSV:", previous_trial_percent)
-    print(" * Percentage of Correct Right-Handed Predictions/Inferences:", right_correct_percent)
-    print(" * Percentage of Correct Left-Handed Predictions/Inferences:", left_correct_percent)
+    print(" * Of The Correct Trials ", right_correct_percent, "% of them were for right-handed users.", left_correct_percent, "% of these trials were for left-handed users.")
+    print(" * Of The Incorrect Trials ", right_incorrect_percent, "% of them were for right-handed users.", left_incorrect_percent, "% of these trials were for left-handed users.")
 
     print("AAA", inputted_trials)
 
