@@ -10,3 +10,14 @@ This document contains a number of questions that could accompany the project, a
 - Are there any crazy outliers within the class data you noticed during your analysis?
 
 ![Import CSV to Sheets](csv.png)
+
+New Questions:
+- What do you see when you run the program?
+- Once you have ran the program and it's basic output, whats do you think is going on?
+- How does your behavior influence the data of the program?
+- How can you be profiled/tracked based on your online behaviour?
+  - What happens if your data is used incorrectly, for say ad recommendations?
+  - What are the implications associated with making incorrect biases?
+  - Do you feel the government should make companies more liable for incorrectly using and tracking user data?
+- Have you noticed any trials heavily skewed on one side of the keyboard that skew total results?
+- On say mobile phones is hand bias a real thing? For instance, Instagrams polls always put the "Yes" option on the left side of the screen.

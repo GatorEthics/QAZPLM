@@ -438,7 +438,7 @@ def analysis(trials_list):
     incorrect_right_trials = 0
     incorrect_left_trials = 0
 
-    csv_file = input(color.UNDERLINE + "\n* Enter your CSV filename (filename.csv) you wish to compare your results with:" + color.END + " ")
+    csv_file = input(color.UNDERLINE + "\nEnter your CSV filename (filename.csv) you wish to compare your results with:" + color.END + " ")
 
     with open(csv_file, "r") as f:
         reader = csv.DictReader(f)
