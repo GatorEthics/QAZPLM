@@ -431,24 +431,52 @@ def analysis(trials_list):
     incorrect_new_trials = 0
     correct_inp_trials = 0
     incorrect_inp_trials = 0
+    correct_right_trials = 0
+    correct_left_trials = 0
 
-    with open("results.csv", "r") as f:
+    with open("total_results.csv", "r") as f:
         reader = csv.DictReader(f)
         inputted_trials = list(reader)
 
     for trial in trials_list:
         if trial['correct'] == "yes":
             correct_new_trials += 1
+            if trial['actual_handedness'] == "right":
+                correct_right_trials += 1
+            elif trial['actual_handedness'] == "left":
+                correct_left_trials += 1
         else:
             incorrect_new_trials += 1
+
+    new_trial_percent = (correct_new_trials / 4) * 100
+
 
     print("Correct new", correct_new_trials, "Incorrect new", incorrect_new_trials)
 
     for trial in inputted_trials:
         if trial['correct'] == "yes":
             correct_inp_trials += 1
+            if trial['actual_handedness'] == "right":
+                correct_right_trials += 1
+            elif trial['actual_handedness'] == "left":
+                correct_left_trials += 1
+            else:
+                pass
         else:
             incorrect_inp_trials += 1
+
+    len_previous_input = len(inputted_trials)
+    len_total_input = len_previous_input + 4
+
+    previous_trial_percent = (correct_inp_trials / len_previous_input) * 100
+    right_correct_percent = (correct_right_trials / len_total_input) * 100
+    left_correct_percent = (correct_left_trials / len_total_input) * 100
+    extra_prediction_percent = (extraneous_predictions / len_total_input) * 100
+
+    print(" * Percentage of Correct Trials from your Run:", new_trial_percent)
+    print(" * Percentage of Correct Trials from Imported CSV:", previous_trial_percent)
+    print(" * Percentage of Correct Right-Handed Predictions/Inferences:", right_correct_percent)
+    print(" * Percentage of Correct Left-Handed Predictions/Inferences:", left_correct_percent)
 
     print("AAA", inputted_trials)
 
