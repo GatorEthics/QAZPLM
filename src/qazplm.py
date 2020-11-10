@@ -105,6 +105,7 @@ def main():
         "Middle %",
         "Right %",
         "Correct",
+        "Actual Handedness",
     ]
 
     total_length = len(all_inputted_letters)
@@ -185,6 +186,7 @@ def main():
                 trial_dict["middle_percent"],
                 trial_dict["right_percent"],
                 trial_dict["correct"],
+                trial_dict["actual_handedness"]
             ]
         )
 
@@ -402,6 +404,7 @@ def data_center(user_hand, trial, length, counted_letters):
         "middle_percent": middle_percent,
         "right_percent": right_percent,
         "correct": correctness,
+        "actual_handedness": user_hand
     }
 
 
