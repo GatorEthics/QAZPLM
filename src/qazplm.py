@@ -499,7 +499,7 @@ def user_input():
     dataset = []
     print("* BE READY TO TYPE LETTERS IN 5 SECONDS *")
 
-    while time.time() - start_time < 2:
+    while time.time() - start_time < 5:
         pass
 
     print(
@@ -509,7 +509,7 @@ def user_input():
         + color.END
         + color.END
     )
-    while time.time() - start_time < 5:
+    while time.time() - start_time < 20:
         inputted = _getch()
         dataset.append(inputted)
 
