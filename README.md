@@ -10,7 +10,7 @@ It is easy to run the QAZPLM program on any machine as the project comes with in
 
 First ensure Docker is installed! You can install [Docker from their website](https://www.docker.com).
 
-Then navigate to the `src` directory of the project in your terminal Window.
+Then navigate to the `src` directory of the project in your terminal window by running the command `cd src`.
 
 You can then build the Docker container based on your machine.
 
@@ -25,7 +25,9 @@ The following bash scripts simplify building the container.
 | Windows 	|  `build_win.bat` 		|  `run_win.bat` |
 
 
-These files may be found in the directory, `docker/` and require the `DockerFile`, which is found in the `src` directory. We show an example of how to build and run a container for **MacOS** below.
+These files may be found in the directory, `docker/` and require the `DockerFile`, which is found in the `src` directory.
+
+We show an example of how to build and run a container for **MacOS** below.
 
 #### Example of and running a Docker container
 Again, ensure you are in the `src` directory.
