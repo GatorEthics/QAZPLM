@@ -56,6 +56,18 @@ The other packages used by this program are `thermios, sys, tty, csv, random, ti
 For instance, to install `thermios`, run `pip install thermios` or run `pip3 install thermios` depending on your machine!
 
 
+## Running the Program using Pipenv
+Make sure Python(3) and Pipenv are installed on your machine. Find information on installing pipenv [here](https://pipenv-fork.readthedocs.io/en/latest/install.html).
+
+### Pipenv
+
+The project comes with a `Pipfile` in the `src` directory that will install the necessary packages for the program, making it easy for users with Pipenv to run the project on their machines.
+
+First navigate to the `src` directory using `cd src`. Then run the command `pipenv lock` to install the necessary Python packages.
+
+You can then run the command `pipenv run python3 qazplm.py` to run the program.
+
+
 ## Results Explained
 
 ```
