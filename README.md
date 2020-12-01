@@ -6,28 +6,39 @@ With this, the computer then makes an inference regarding what handedness the us
 
 ## Running The Program
 
-To run the QAZPLM program, first ensure that Python3 is installed on your system. You can then run the program using Pip or Pipenv depending on your preferences and what you have installed.
+It is easy to run the QAZPLM program on any machine as the project comes with included Docker files that set up environments specific to the user's machine.
 
-Once running, the program will then ask users to enter as many random letters on their keyboards as possible during four trials.
+First ensure Docker is installed! You can install [Docker from their website](https://www.docker.com).
 
-### Pipenv
+Then navigate to the `src` directory of the project in your terminal Window.
 
-The project comes with a `Pipfile` in the `src` directory that will install the necessary packages for the program, making it easy for users with Pipenv to run the project on their machines.
+You can then build the Docker container based on your machine.
 
-First navigate to the `src` directory using `cd src`. Then run the command `pipfile lock` to install the necessary Python packages.
+### Shortcut to running and building a working container
 
-You can then run the command `pipenv run python3 qazplm.py` to run the program.
+The following bash scripts simplify building the container.
 
-### Pip/Python3
+| OS  | Building  | Running  |
+|---|---|---|
+| MacOS  		|  `./build_macOS.sh` |  `./run_macOS.sh` |
+| Linux   	|  `./build_linux.sh` | `./run_linux.sh`  |
+| Windows 	|  `build_win.bat` 		|  `run_win.bat` |
 
-If you have Pip and Python3 installed on your machine, you can use Pip to install the necessary dependencies.
 
-Run the command `pip install prettytable`. Then navigate to the `src` directory and run `python3 qazplm.py` to run the program.
+These files may be found in the directory, `docker/` and require the `DockerFile`, which is found in the `src` directory. We show an example of how to build and run a container for **MacOS** below.
 
+#### Example of and running a Docker container
+Again, ensure you are in the `src` directory.
 
-#### Other Packages
+To build the container, `./docker/build_macOS.sh` and to run the container, `./docker/run_macOS.sh`.
 
-The other packages used by this program are `thermios, sys, tty, csv, random, time, threading`. If you encounter errors try to `pip install` these.
+### Running the QAZPLM program in a Docker Container
+
+After building and entering your container by running the Docker commands above, you are ready to run the QAZPLM program.
+
+Again ensure you are in the `src` directory.
+
+To run the program, you can then run the command `python3 qazplm.py`
 
 ## Results Explained
 
