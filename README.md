@@ -4,7 +4,7 @@ The QAZPLM Program demonstrates hidden biases in the inferences made by larger s
 
 With this, the computer then makes an inference regarding what handedness the user is. The user's decisions or unnoticed hand bias will determine the computer's handedness inference.
 
-## Running The Program
+## Running The Program Using Docker
 
 It is easy to run the QAZPLM program on any machine as the project comes with included Docker files that set up environments specific to the user's machine.
 
@@ -41,6 +41,20 @@ After building and entering your container by running the Docker commands above,
 Again ensure you are in the `src` directory.
 
 To run the program, you can then run the command `python3 qazplm.py`
+
+## Running the Program using Pip/Python3
+
+If you have Pip and Python3 installed on your machine, you can use Pip to install the necessary dependencies.
+
+Run the command `pip install prettytable`. Then navigate to the `src` directory and run `python3 qazplm.py` to run the program.
+
+
+### Other Packages
+
+The other packages used by this program are `thermios, sys, tty, csv, random, time, threading`. If you encounter errors try to `pip install` these.
+
+For instance, to install `thermios`, run `pip install thermios` or run `pip3 install thermios` depending on your machine!
+
 
 ## Results Explained
 
