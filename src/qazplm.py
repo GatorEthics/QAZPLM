@@ -51,7 +51,7 @@ def main():
     while trial_count <= 4:
         user_ready = "N"
         if trial_count == 1:
-            while user_ready != "Y":
+            while user_ready.upper() != "Y":
                 user_ready = input(
                     color.UNDERLINE
                     + "\nEnter Y when you are ready to continue:"
@@ -65,11 +65,11 @@ def main():
                 + color.END
                 + "  "
             )
-            if user_ready == "Y":
+            if user_ready.upper() == "Y":
                 pass
-            elif user_ready == "V":
+            elif user_ready.upper() == "V":
                 print(trial_table)
-                while user_ready != "Y":
+                while user_ready.upper() != "Y":
                     user_ready = input(
                         color.UNDERLINE
                         + "\nEnter Y when you are ready to continue:"
@@ -77,7 +77,7 @@ def main():
                         + "  "
                     )
             else:
-                while user_ready != "Y":
+                while user_ready.upper() != "Y":
                     user_ready = input(
                         "\nEnter Y when you are ready to continue:" + color.END + "  "
                     )
@@ -138,11 +138,11 @@ def main():
         + color.END
         + "  "
     )
-    if user_ready == "Y":
+    if user_ready.upper() == "Y":
         pass
-    elif user_ready == "V":
+    elif user_ready.upper() == "V":
         print(gen_trial_table)
-        while user_ready != "Y":
+        while user_ready.upper() != "Y":
             user_ready = input(
                 color.UNDERLINE
                 + "\nEnter Y when you are ready to continue:"
@@ -150,7 +150,7 @@ def main():
                 + "  "
             )
     else:
-        while user_ready != "Y":
+        while user_ready.upper() != "Y":
             user_ready = input(
                 color.UNDERLINE
                 + "\nEnter Y when you are ready to continue:"
@@ -186,12 +186,12 @@ def main():
         + color.END
         + "  "
     )
-    if user_ready == "N":
+    if user_ready.upper() == "N":
         pass
-    elif user_ready == "C":
+    elif user_ready.upper() == "C":
         analysis(trials_list[0:4])
     else:
-        while user_ready != "Y":
+        while user_ready.upper() != "Y":
             user_ready = input(
                 color.UNDERLINE
                 + "\nEnter Y to exit the program:"
