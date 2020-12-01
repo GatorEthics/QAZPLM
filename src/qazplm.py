@@ -194,7 +194,7 @@ def main():
         while user_ready != "Y":
             user_ready = input(
                 color.UNDERLINE
-                + "\nEnter N to exit the program:"
+                + "\nEnter Y to exit the program:"
                 + color.END
                 + "  "
             )
@@ -499,7 +499,7 @@ def user_input():
     dataset = []
     print("* BE READY TO TYPE LETTERS IN 5 SECONDS *")
 
-    while time.time() - start_time < 5:
+    while time.time() - start_time < 1:
         pass
 
     print(
@@ -509,7 +509,7 @@ def user_input():
         + color.END
         + color.END
     )
-    while time.time() - start_time < 20:
+    while time.time() - start_time < 5:
         inputted = _getch()
         dataset.append(inputted)
 
