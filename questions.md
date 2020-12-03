@@ -23,6 +23,6 @@ Choose the options as shown in the picture (Append to current sheet, Detect Auto
 Your `results.csv` will then be added to the Google Sheet for future analysis. Does anything stick out to you in the populated sheet?
 
 
-![Import CSV to Sheets](csv.png)
+![Import CSV to Sheets](images/csv.png)
 
 If you want to use the program to gain insights about the class-wide Google Sheet simply export it as a CSV. Then when you run the program, after you run new trials, you will have the option to read in the "class-wide" CSV file for further analysis.

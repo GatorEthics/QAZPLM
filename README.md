@@ -4,6 +4,8 @@ The QAZPLM Program demonstrates hidden biases in the inferences made by larger s
 
 With this, the computer then makes an inference regarding what handedness the user is. The user's decisions or unnoticed hand bias will determine the computer's handedness inference.
 
+While an incorrect handedness prediction may not seem major, when other algorithms make incorrect assumptions and predictions about a user for say things like advertisements the implications can become more serious.
+
 ## Running The Program Using Docker
 
 It is easy to run the QAZPLM program on any machine as the project comes with included Docker files that set up environments specific to the user's machine.
@@ -89,6 +91,14 @@ You can then run the command `pipenv run python3 qazplm.py` to run the program.
 Here is a results table that is displayed at the end of the program. It displays the trial, the number of letters entered for a given trial, and the percentages for where letters were entered on the keyboard.
 
 In addition to the regular trials, the table also contains a "Total" trial row which sums all the data from each trial together. This gives the user a good picture of their overall results. It also contains a "Generated Data" trial row which contains the results of randomly generating another letter dataset the same size as Total, with the letters being randomly picked based on probabilities derived from the percentages of individual letters entered by the user. This helps paint a picture of how an algorithm can manipulate data and if the data is biased (heavy in one area) how that can affect this manipulation.
+
+### Class Exercise Results
+
+A class of CS301 (Data Analytics) students used the tool, answering questions like those found in `questions.md`. With this, they also inputted their results into a [collaborative Google Sheet](https://docs.google.com/spreadsheets/d/11KEex7QNXOqKhE-nQtkI5_tfjOIAzmh_OLlZn8G2vhg/edit?usp=sharing) (which can be accessed with an `@allegheny.edu` account).
+
+Through 44 trials the results of the program's handedness prediction were mostly correct, with an accuracy of 67.4%.
+
+![Results Graph](images/results_graph.png)
 
 ## Ideas, Issues, or Praise?
 
